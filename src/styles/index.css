@@ -32,6 +32,9 @@ padding-left: 0;
   max-width: 900px;
   margin: 0 auto;
 }
+.checkBox{
+  margin: 0 5px 0 5px;
+}
 .searchBox{
   display: flex;
   justify-content: center;
