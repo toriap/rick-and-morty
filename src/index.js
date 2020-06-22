@@ -34,6 +34,7 @@ super(props);
     status:"",
     error: null,
     loading: true,
+    character:"",
     page: 1,
     data: {
       results: [],
@@ -57,7 +58,7 @@ componentDidMount(){
 fetchCharacters = async () => {
   this.setState({loading: true, error: null})
   try{
-    if (this.state.query.length > 0){
+    if (this.state.query.length > 0 || this.state.status){
     const response = await fetch(`https://rickandmortyapi.com/api/character/?name=${this.state.query.toLowerCase()}&status=${this.state.status}`);
     const data = await response.json()
     this.setState({
@@ -155,7 +156,7 @@ render(){
                 <label><input name="status" type="radio" className="radio"
         onChange={()=> {return this.setState({status:"dead"})}}
         />Dead</label>
-                <label><input name="status" type="radio" className="radio"
+        <label><input name="status" type="radio" className="radio"
         onChange={()=> {return this.setState({status:"unknown"})}}
         />Unknown</label>
         <input placeholder="Search" className="searchBar" type="text"
